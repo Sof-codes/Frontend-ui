@@ -1,0 +1,59 @@
+{
+    "id": "root",
+    "label": "MindMap Node",
+    "type": "root",
+    "details": "The central concept of our mindmap.",
+    "children": [
+        {
+            "id": "1",
+            "label": "Research",
+            "details": "Gathering information and data.",
+            "children": [
+                {
+                    "id": "1-1",
+                    "label": "Market Analysis",
+                    "details": "Analyzing market trends and competitors."
+                },
+                {
+                    "id": "1-2",
+                    "label": "User Feedback",
+                    "details": "Collecting feedback from potential users."
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "label": "Design",
+            "details": "Creating the visual and functional design.",
+            "children": [
+                {
+                    "id": "2-1",
+                    "label": "Prototyping",
+                    "details": "Building initial mockups."
+                },
+                {
+                    "id": "2-2",
+                    "label": "UI/UX",
+                    "details": "Focusing on user interface and experience."
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "label": "Development",
+            "details": "Coding and building the application.",
+            "children": [
+                {
+                    "id": "3-1",
+                    "label": "Frontend",
+                    "details": "Client-side development."
+                },
+                {
+                    "id": "3-2",
+                    "label": "Backend",
+                    "details": "Server-side logic and database."
+                }
+            ]
+        }
+    ]
+}
