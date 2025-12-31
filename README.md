@@ -1,43 +1,32 @@
-# Interactive Mindmap UI
+Solution Description
+🚀 Technologies used
+I used React along with Vite for this project. 
+I find React amazing because it lets me break everything down into small pieces (components), which makes the code much easier to manage.
+I used Vanilla CSS for the styling because I wanted total control over the "Light Mode" look, making it feel clean and modern without using heavy frameworks.
 
-A premium, data-driven mindmap visualization built for the Frontend Internship assignment.
+📚 Libraries used (and why)
+React Flow: This is the "big" one. 
+It handles the entire canvas. I used it because it makes things like zooming in/out and dragging the map around feel super smooth right out of the box.
+Dagre: This is like the "brain" for positioning. 
+I used it because it automatically calculates where every box should go so the mindmap looks like a perfect tree. Without it, I'd have to manually set the X and Y coordinates for every single node.
+Lucide React: I used this for icons. It’s light and makes the buttons look much more professional than just using text.
+gh-pages: This helped me get the project live on GitHub so you can actually see it working.
 
-## 🚀 Technologies Used
-- **React (Vite)**: Core framework for building the interactive UI.
-- **React Flow**: Powerful library for rendering node-based graphs and mindmaps.
-- **Dagre**: Used for automatic hierarchical layout calculation (Parent → Child).
-- **Lucide React**: Premium icon set for a modern aesthetic.
-- **Vanilla CSS**: Custom design system with glassmorphism and dark mode.
+🏗️ Overall architecture / approach
+My main goal was to keep the Data and the View separate.
 
-## 🧠 Architecture & Approach
-### 1. Data-Driven Core
-The entire application is driven by a structured `mindmapData.json` file. 
-- **Transformation**: The hierarchical JSON is flattened into nodes and edges using a recursive `traverse` function located in `src/utils/transformData.js`.
-- **Layouting**: The flattened data is passed through the `Dagre` layout engine to automatically calculate `x` and `y` coordinates, ensuring a clean "Left-to-Right" tree structure.
+Decoupled Design: The app doesn't have any hardcoded boxes. Instead, it "asks" a JSON file for what to show.
+Interactive Sidebar: I built a sidebar that only pops up when you select a node. This keeps the design clean and lets the user focus on the map itself.
+State Management: I used React's useState and useCallback to handle things like "hiding" child nodes when you click a parent, which makes the map feel alive.
 
-### 2. State Management
-- **React Flow Hooks**: `useNodesState` and `useEdgesState` manage the visual elements.
-- **Visibility Logic**: A custom `updateVisibility` function handles the "Collapse/Expand" feature by recursively hiding/showing child nodes based on the parent's `isExpanded` state.
+🔄 How data flows from the JSON to the UI
+It’s like a 3-step pipeline that runs every time something changes:
 
-### 3. User Experience (UX)
-- **Hover Intelligence**: Hovering over any node reveals a contextual tooltip with a short summary.
-- **Interactive Editing**: Selecting a node opens a side panel where you can edit the label and description in real-time.
-- **Visual Feedback**: Selection highlights the node and its immediate connections with brand-colored glows and animations.
+Read the JSON: First, the app pulls the hierarchy from 
+mindmapData.json
+.
+Calculate the Layout: The app sends that data to the Dagre library. Dagre does the math to figure out, "If Box A is the parent, Box B and C should sit right next to it."
+Draw the Map: Finally, the app takes those calculated positions and tells React Flow to draw them.
+Cool part: If you edit a name in the sidebar, the app updates the data in the background, and the map instantly re-draws itself with the new info!
 
-## ✨ Functional Requirements Met
-- ✅ **Mindmap Visualization**: Hierarchical graph structure.
-- ✅ **Hover Interactions**: Instant quick-info tooltips.
-- ✅ **Click Interactions**: Smooth collapse/expand and edge highlighting.
-- ✅ **Viewport Controls**: Fit to View and Reset Zoom functionality.
-- ✅ **Manual Editing**: Live node updates via the Sidebar.
-- ✅ **Data-Driven**: Modifying `mindmapData.json` instantly updates the visualization structure.
-
-## 🛠️ How to Data-Drive
-To update the mindmap, simply edit `src/data/mindmapData.json`. The UI will automatically:
-1. Re-calculate the hierarchy.
-2. Re-apply the layout.
-3. Update all node labels, descriptions, and metadata.
-
----
-
-*Developed with ❤️ as part of the Frontend UI Internship Assignment.*
+You can see result here: https://sof-codes.github.io/Frontend-ui/
